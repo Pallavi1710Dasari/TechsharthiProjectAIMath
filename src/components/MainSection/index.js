@@ -130,6 +130,28 @@ function MainSection({ containerClassName, pdfpage }) {
     }
   };
 
+
+  // Custom button styles
+  const buttonStyle = {
+    display: 'block',
+    width: '100%',
+    padding: '12px 0',
+    margin: '10px 0',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    color: '#fff',
+    backgroundColor: '#007BFF', // Blue background for the buttons
+    border: 'none',
+    borderRadius: '6px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+  };
+
+  const closeButtonStyle = {
+    ...buttonStyle,
+    backgroundColor: '#dc3545', // Red background for the close button
+  };
+
   return (
     <div>
       <div className={containerClassName}>
@@ -180,26 +202,45 @@ function MainSection({ containerClassName, pdfpage }) {
                 overlayClassName="overlay"
                 style={{
                   content: {
-                    top: '60px', // Position below the + icon
+                    top: '200px', // Adjust as needed for better positioning
                     left: '50%',
                     right: 'auto',
                     bottom: 'auto',
                     transform: 'translateX(-50%)',
-                    width: '300px',
-                    padding: '20px',
-                    border: 'none',
-                    borderRadius: '10px',
+                    width: '350px', // Slightly wider for better spacing
+                    padding: '25px', // Increase padding for more space inside
+                    border: '2px solid #ccc', // Subtle border for better separation
+                    borderRadius: '12px', // Slightly more rounded corners
+                    backgroundColor: '#f9f9f9', // Light grey background for a softer look
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Add a shadow for depth
                   },
                   overlay: {
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.75)', // Darker overlay for more focus
                   },
                 }}
               >
-                <h2>Select an Option</h2>
-                <button onClick={() => document.getElementById('file-upload').click()}>Upload File</button>
-                <button onClick={handleCameraClick}>Use Camera</button>
-                <button onClick={closeModal}>Close</button>
+                <h2 style={{ 
+                  fontSize: '20px', 
+                  marginBottom: '20px', 
+                  textAlign: 'center', 
+                  color: '#333', 
+                  fontFamily: 'Arial, sans-serif' 
+                }}>
+                  Select an Option
+                </h2>
+                <button 
+                  onClick={() => document.getElementById('file-upload').click()} 
+                  style={buttonStyle}>
+                  Upload File
+                </button>
+                <button onClick={handleCameraClick} style={buttonStyle}>
+                  Use Camera
+                </button>
+                <button onClick={closeModal} style={closeButtonStyle}>
+                  Close
+                </button>
               </Modal>
+
               <input
                 type="file"
                 id="file-upload"
