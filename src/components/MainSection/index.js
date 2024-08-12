@@ -131,6 +131,11 @@ function MainSection({ containerClassName, pdfpage, cardsContainerClassName}) {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSendMessage();
+    }
+  };
 
   // Custom button styles
   const buttonStyle = {
@@ -189,6 +194,7 @@ function MainSection({ containerClassName, pdfpage, cardsContainerClassName}) {
             placeholder="Hi! Ask me anything..."
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
+            onKeyPress={handleKeyPress} // Listen for the Enter key
           />
           {!pdfpage && (
             <>
