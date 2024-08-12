@@ -112,6 +112,10 @@ function MainSection({ containerClassName, pdfpage }) {
     setIsCameraCaptureOpen(true);
   };
 
+  const handleCloseCameraCapture = () => {
+    setIsCameraCaptureOpen(false);
+  };
+
   const renderMessageContent = (content) => {
     if (content[0].type === 'text') {
       const formattedText = content[0].text.split('\n').map((str, index) => {
@@ -169,28 +173,28 @@ function MainSection({ containerClassName, pdfpage }) {
                 <i className="fas fa-plus"></i>
               </label>
               <Modal
-                  isOpen={isModalOpen}
-                  onRequestClose={closeModal}
-                  contentLabel="Upload Options"
-                  className="modal"
-                  overlayClassName="overlay"
-                  style={{
-                    content: {
-                      top: '60px', // Position below the + icon
-                      left: '50%',
-                      right: 'auto',
-                      bottom: 'auto',
-                      transform: 'translateX(-50%)',
-                      width: '300px',
-                      padding: '20px',
-                      border: 'none',
-                      borderRadius: '10px',
-                    },
-                    overlay: {
-                      backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                    },
-                  }}
-                >
+                isOpen={isModalOpen}
+                onRequestClose={closeModal}
+                contentLabel="Upload Options"
+                className="modal"
+                overlayClassName="overlay"
+                style={{
+                  content: {
+                    top: '60px', // Position below the + icon
+                    left: '50%',
+                    right: 'auto',
+                    bottom: 'auto',
+                    transform: 'translateX(-50%)',
+                    width: '300px',
+                    padding: '20px',
+                    border: 'none',
+                    borderRadius: '10px',
+                  },
+                  overlay: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                  },
+                }}
+              >
                 <h2>Select an Option</h2>
                 <button onClick={() => document.getElementById('file-upload').click()}>Upload File</button>
                 <button onClick={handleCameraClick}>Use Camera</button>
@@ -211,7 +215,7 @@ function MainSection({ containerClassName, pdfpage }) {
         </div>
         {isCameraCaptureOpen && (
           <div id="camera-capture" style={{ position: 'absolute', top: '50px', left: '50%', transform: 'translateX(-50%)' }}>
-            <CameraCapture onCapture={handleCapture} />
+            <CameraCapture onCapture={handleCapture} onClose={handleCloseCameraCapture} />
           </div>
         )}
       </div>

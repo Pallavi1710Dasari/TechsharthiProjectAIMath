@@ -138,6 +138,7 @@ body {
     z-index: 1;
   }
   
+
   .modal {
     position: absolute;
     bottom: 50px; /* Adjust this value to control the distance from the `+` icon */
