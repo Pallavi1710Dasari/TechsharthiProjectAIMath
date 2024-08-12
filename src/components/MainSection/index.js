@@ -7,11 +7,12 @@ import { sendMessageToApi, uploadFileToApi } from '../../service/serviceApi';
 import { FaFilePdf } from 'react-icons/fa6';
 import Modal from 'react-modal';
 import CameraCapture from '../CameraCapture';
+import RightSidebar from '../RightSidebar';
 
 // Set the app element for accessibility
 Modal.setAppElement('#root');
 
-function MainSection({ containerClassName, pdfpage }) {
+function MainSection({ containerClassName, pdfpage, cardsContainerClassName}) {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -155,7 +156,7 @@ function MainSection({ containerClassName, pdfpage }) {
   return (
     <div>
       <div className={containerClassName}>
-        <Header />
+        {/*<Header />*/}
         <div id="chat-container">
           {pdfpage && !fileSelected && (
             <div className='upload-pdf-con'>
@@ -254,6 +255,7 @@ function MainSection({ containerClassName, pdfpage }) {
             <i className="fas fa-paper-plane"></i>
           </button>
         </div>
+        <RightSidebar cardsContainerClassName={cardsContainerClassName}/>
         {isCameraCaptureOpen && (
           <div id="camera-capture" style={{ position: 'absolute', top: '50px', left: '50%', transform: 'translateX(-50%)' }}>
             <CameraCapture onCapture={handleCapture} onClose={handleCloseCameraCapture} />

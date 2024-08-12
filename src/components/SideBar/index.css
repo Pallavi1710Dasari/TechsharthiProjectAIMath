@@ -145,12 +145,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-.gradient-title {
-  font-weight: bold;
-  background: linear-gradient(90deg, #ff7e5f, #feb47b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
 /* .subtitle {
   font-size: 20px;
